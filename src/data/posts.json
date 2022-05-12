@@ -1,0 +1,25 @@
+[
+    {
+        "id": 1,
+        "author": {
+            "firstName": "Adam",
+            "lastName": "Testowy",
+            "photo": "face-photo.jpg"
+        },
+        "creationDate": "2022-05-10T13:50",
+        "content": "test test test",
+        "likes": 0,
+        "comments": [],
+        "person": "Barbara",
+        "group": {
+            "id": "2",
+            "name": "Marketing",
+            "icon": "office.svg"
+        },
+        "kudos": {
+            "id": 1,
+            "image": "positive_attitude.svg",
+            "description": "super jestes"
+        }
+    }
+]

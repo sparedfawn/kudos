@@ -1,0 +1,12 @@
+[
+    {
+        "id": "1",
+        "name": "Białystok",
+        "icon": "office.svg"
+    },
+    {
+        "id": "2",
+        "name": "Marketing",
+        "icon": "office.svg"
+    }
+]
