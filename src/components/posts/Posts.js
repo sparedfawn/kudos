@@ -18,7 +18,7 @@ const Posts = () => {
         <main>
             <AddPostForm />
             <AddPostButton />
-            {postsSection}
+            <section>{postsSection}</section>
         </main>
     );
 };

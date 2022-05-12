@@ -1,14 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-const AddPostBottom = () => {
-    const [groupsData, setGroupsData] = useState([]);
-
-    useEffect(() => {
-        const groupsJsonData = require("../../data/groups.json");
-        setGroupsData(groupsJsonData);
-    }, []);
-
-    const groupsSelectOptions = groupsData.map((group) => {
+const AddPostBottom = ({ groups }) => {
+    const groupsSelectOptions = groups.map((group) => {
         const iconPath = `../../icons/groups/${group.icon}`;
         return (
             <option value={group.id} key={group.id}>

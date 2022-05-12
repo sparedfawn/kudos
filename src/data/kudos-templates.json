@@ -1,7 +1,32 @@
 [
     {
         "id": 1,
+        "image": "true_love.svg",
+        "description": "Dziękuje Ci"
+    },
+    {
+        "id": 2,
+        "image": "super_thank_you.svg",
+        "description": "Gratulacje"
+    },
+    {
+        "id": 3,
+        "image": "team_spirit.svg",
+        "description": "Gracz zespołowy"
+    },
+    {
+        "id": 4,
         "image": "positive_attitude.svg",
-        "description": "super jestes"
+        "description": "Pozytywny wpływ"
+    },
+    {
+        "id": 5,
+        "image": "real_time_collaboration.svg",
+        "description": "Super współpracownik"
+    },
+    {
+        "id": 6,
+        "image": "teacher.svg",
+        "description": "Przechodzisz samego (samą) siebie"
     }
 ]
