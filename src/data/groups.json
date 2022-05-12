@@ -2,11 +2,11 @@
     {
         "id": "1",
         "name": "Białystok",
-        "icon": "office.svg"
+        "icon": "https://raw.githubusercontent.com/sparedfawn/image-host/660764526a015b10a662896dae4d84040a340902/kudos-app/groups/office.svg"
     },
     {
         "id": "2",
         "name": "Marketing",
-        "icon": "office.svg"
+        "icon": "https://raw.githubusercontent.com/sparedfawn/image-host/660764526a015b10a662896dae4d84040a340902/kudos-app/groups/office.svg"
     }
 ]

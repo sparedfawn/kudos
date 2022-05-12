@@ -5,11 +5,10 @@ import TextArea from "../TextArea";
 
 const AddComment = () => {
     const { loggedInUserData } = useContext(LoggedInUserContext);
-    const userPhotoPath = `../../images/${loggedInUserData.photo}`;
 
     return (
         <section>
-            <img src={userPhotoPath} />
+            <img src={loggedInUserData.photo} />
             <TextArea />
         </section>
     );

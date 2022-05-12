@@ -13,7 +13,7 @@ const ContextProvider = ({ children }) => {
         setLoggedInUserData({
             firstName: "Adam",
             lastName: "Testowy",
-            photo: "face-photo.jpg",
+            photo: "https://raw.githubusercontent.com/sparedfawn/image-host/main/kudos-app/face-photo.jpg",
         });
     }, []);
 

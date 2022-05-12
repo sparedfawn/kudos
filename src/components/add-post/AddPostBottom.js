@@ -2,7 +2,6 @@ import React from "react";
 
 const AddPostBottom = ({ groups }) => {
     const groupsSelectOptions = groups.map((group) => {
-        const iconPath = `../../icons/groups/${group.icon}`;
         return (
             <option value={group.id} key={group.id}>
                 {group.name}

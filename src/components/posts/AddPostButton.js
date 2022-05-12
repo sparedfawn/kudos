@@ -5,10 +5,9 @@ import AgreementIcon from "../../icons/agreement.svg";
 
 const AddPostButton = () => {
     const { loggedInUserData } = useContext(LoggedInUserContext);
-    const userPhotoPath = `../../images/${loggedInUserData.photo}`;
     return (
         <button>
-            <img src={userPhotoPath}/>
+            <img src={loggedInUserData.photo}/>
             <span>Kilknij, aby dodać post</span>
             <img src={AgreementIcon}/>
         </button>

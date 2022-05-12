@@ -4,7 +4,7 @@
         "author": {
             "firstName": "Adam",
             "lastName": "Testowy",
-            "photo": "face-photo.jpg"
+            "photo": "https://raw.githubusercontent.com/sparedfawn/image-host/main/kudos-app/face-photo.jpg"
         },
         "creationDate": "2022-05-10T13:50",
         "content": "test test test",
@@ -14,12 +14,12 @@
         "group": {
             "id": "2",
             "name": "Marketing",
-            "icon": "office.svg"
+            "icon": "https://raw.githubusercontent.com/sparedfawn/image-host/660764526a015b10a662896dae4d84040a340902/kudos-app/groups/office.svg"
         },
         "kudos": {
             "id": 1,
-            "image": "positive_attitude.svg",
-            "description": "super jestes"
+            "image": "https://raw.githubusercontent.com/sparedfawn/image-host/660764526a015b10a662896dae4d84040a340902/kudos-app/kudos/true_love.svg",
+            "description": "Dziękuje Ci"
         }
     }
 ]
