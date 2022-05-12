@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 import { LoggedInUserContext } from "../../context/LoggedInUserContext";
-import TextArea from "../TextArea";
+import TextArea from "../text-area/TextArea";
 
 const AddComment = () => {
     const { loggedInUserData } = useContext(LoggedInUserContext);

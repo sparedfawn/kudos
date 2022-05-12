@@ -1,6 +1,6 @@
 import React from "react";
 
-import TextArea from "../TextArea";
+import TextArea from "../text-area/TextArea";
 
 const AddPostTextSection = () => {
     return <section className="add-post-text-section">
