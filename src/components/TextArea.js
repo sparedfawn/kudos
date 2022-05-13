@@ -1,5 +1,4 @@
 import React, { useCallback, useState, useMemo } from "react";
-import { EditorState } from "draft-js";
 import Editor from "@draft-js-plugins/editor";
 import createEmojiPlugin from "@draft-js-plugins/emoji";
 import createHashtagPlugin from "@draft-js-plugins/hashtag";
@@ -13,11 +12,9 @@ import GifIcon from "../icons/gif.svg";
 import AttachmentIcon from "../icons/attachment.svg";
 import mentions from "./mentions";
 
-const TextArea = () => {
+const TextArea = ({editorState, setEditorState}) => {
     const [open, setOpen] = useState(false);
     const [suggestions, setSuggestions] = useState(mentions);
-
-    const [editorValue, setEditorValue] = useState(() => EditorState.createEmpty());
 
     const { plugins, EmojiSuggestions, EmojiSelect, MentionSuggestions } = useMemo(() => {
         const mentionPlugin = createMentionPlugin();
@@ -32,7 +29,7 @@ const TextArea = () => {
     }, []);
 
     const handleTextEditorValueChange = (value) => {
-        setEditorValue(value);
+        setEditorState(value);
     };
 
     const onOpenChange = useCallback((open) => {
@@ -45,7 +42,7 @@ const TextArea = () => {
 
     return (
         <div>
-            <Editor editorState={editorValue} onChange={handleTextEditorValueChange} plugins={plugins} />
+            <Editor editorState={editorState} onChange={handleTextEditorValueChange} plugins={plugins} />
             <EmojiSuggestions />
             <MentionSuggestions
                 open={open}
