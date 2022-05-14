@@ -12,14 +12,14 @@ import GifIcon from "../icons/gif.svg";
 import AttachmentIcon from "../icons/attachment.svg";
 import mentions from "./mentions";
 
-const TextArea = ({editorState, setEditorState}) => {
+const TextArea = ({ editorState, setEditorState }) => {
     const [open, setOpen] = useState(false);
     const [suggestions, setSuggestions] = useState(mentions);
 
     const { plugins, EmojiSuggestions, EmojiSelect, MentionSuggestions } = useMemo(() => {
         const mentionPlugin = createMentionPlugin();
         const hashtagPlugin = createHashtagPlugin();
-        const emojiPlugin = createEmojiPlugin({ useNativeArt: false }); 
+        const emojiPlugin = createEmojiPlugin({ useNativeArt: false });
 
         const { MentionSuggestions } = mentionPlugin;
         const { EmojiSuggestions, EmojiSelect } = emojiPlugin;
@@ -42,7 +42,12 @@ const TextArea = ({editorState, setEditorState}) => {
 
     return (
         <div>
-            <Editor editorState={editorState} onChange={handleTextEditorValueChange} plugins={plugins} />
+            <Editor
+                editorState={editorState}
+                onChange={handleTextEditorValueChange}
+                plugins={plugins}
+                placeholder="Podaj treść posta"
+            />
             <EmojiSuggestions />
             <MentionSuggestions
                 open={open}

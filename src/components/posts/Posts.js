@@ -15,11 +15,13 @@ const Posts = () => {
     const postsSection = postsData.map((post) => <Post key={post.id} post={post} />);
 
     return (
-        <main>
+        <>
             <AddPostForm />
-            <AddPostButton />
-            <section>{postsSection}</section>
-        </main>
+            <main>
+                <AddPostButton />
+                <section>{postsSection}</section>
+            </main>
+        </>
     );
 };
 

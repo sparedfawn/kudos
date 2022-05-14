@@ -16,10 +16,10 @@
     "@draft-js-plugins/hashtag": "^4.2.2",
     "@draft-js-plugins/mention": "^5.2.1",
     "draft-js": "^0.11.7",
-    "draftjs-to-html": "^0.9.1",
     "moment": "^2.29.3",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.10",
