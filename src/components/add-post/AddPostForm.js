@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { EditorState, convertToRaw } from "draft-js";
 
 import AddPostHead from "./AddPostHead";
@@ -6,10 +6,12 @@ import AddPostTextSection from "./AddPostTextSection";
 import AddPostPickKudos from "./AddPostPickKudos";
 import AddPostBottom from "./AddPostBottom";
 import AddPostMentions from "./AddPostMentions";
+import { LoggedInUserContext } from "../../context/LoggedInUserContext";
 
-const AddPostForm = () => {
+const AddPostForm = ({ addPost }) => {
     const [kudosTemplatesData, setKudosTemplatesData] = useState([]);
     const [groupsData, setGroupsData] = useState([]);
+    const { loggedInUserData } = useContext(LoggedInUserContext);
 
     const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
     const [formState, setFormState] = useState({
@@ -35,8 +37,39 @@ const AddPostForm = () => {
         });
     };
 
-    // //fixMe tutaj jest normalnie jak wziąć state edytora
-    // console.log(convertToRaw(editorState.getCurrentContent()).entityMap)
+    const handlePickingKudos = (id) => {
+        setFormState((prevFormState) => {
+            return {
+                ...prevFormState,
+                kudosId: id,
+            };
+        });
+    };
+
+    const handlePickingGroup = (event) => {
+        const { value } = event.target;
+        setFormState((prevFormState) => {
+            return {
+                ...prevFormState,
+                groupId: value,
+            };
+        });
+    };
+
+    const handlePublishingPost = () => {
+        const postFormData = {
+            author: loggedInUserData,
+            creationDate: new Date(),
+            content: convertToRaw(editorState.getCurrentContent()),
+            likes: 0,
+            comments: [],
+            person: handleMentions(editorState, formState.removedFromMentions)[0],
+            group: groupsData.find(group => group.id === formState.groupId),
+            kudos: kudosTemplatesData.find(kudos => kudos.id === formState.kudosId)
+        }
+        console.log('to przechodzi')
+        addPost(postFormData)
+    }
 
     const mentions = handleMentions(editorState, formState.removedFromMentions);
 
@@ -46,8 +79,13 @@ const AddPostForm = () => {
             <AddPostTextSection editorState={editorState} setEditorState={setEditorState} />
             {/* <Editor editorState={editorState} readOnly/> */}
             <AddPostMentions mentions={mentions} handleRemovingFromMentions={handleRemovingFromMentions} />
-            <AddPostPickKudos kudosTemplates={kudosTemplatesData} />
-            <AddPostBottom groups={groupsData} />
+            <AddPostPickKudos
+                handlePickingKudos={handlePickingKudos}
+                pickedKudosId={formState.kudosId}
+                kudosTemplates={kudosTemplatesData}
+            />
+            <AddPostBottom handlePickingGroup={handlePickingGroup} groups={groupsData} />
+            <button onClick={handlePublishingPost}>Opublikuj</button>
         </main>
     );
 };

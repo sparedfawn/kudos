@@ -1,6 +1,6 @@
 import React from "react";
 
-const AddPostBottom = ({ groups }) => {
+const AddPostBottom = ({ handlePickingGroup, groups }) => {
     const groupsSelectOptions = groups.map((group) => {
         return (
             <option value={group.id} key={group.id}>
@@ -12,10 +12,7 @@ const AddPostBottom = ({ groups }) => {
     return (
         <section>
             <h5>Wybierz grupę</h5>
-            <div>
-                <select>{groupsSelectOptions}</select>
-                <button>Opublikuj</button>
-            </div>
+            <select onChange={handlePickingGroup}>{groupsSelectOptions}</select>
         </section>
     );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 
-import Posts from "./components/posts/Posts";
+import Posts from "./components/post/Posts";
 import { LoggedInUserContextProvider } from "./context/LoggedInUserContext";
 
 const App = () => {

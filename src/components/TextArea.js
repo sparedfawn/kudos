@@ -12,7 +12,7 @@ import GifIcon from "../icons/gif.svg";
 import AttachmentIcon from "../icons/attachment.svg";
 import mentions from "./mentions";
 
-const TextArea = ({ editorState, setEditorState }) => {
+const TextArea = ({ editorState, setEditorState, readOnly, placeholder }) => {
     const [open, setOpen] = useState(false);
     const [suggestions, setSuggestions] = useState(mentions);
 
@@ -46,18 +46,23 @@ const TextArea = ({ editorState, setEditorState }) => {
                 editorState={editorState}
                 onChange={handleTextEditorValueChange}
                 plugins={plugins}
-                placeholder="Podaj treść posta"
+                placeholder={placeholder}
+                readOnly={readOnly}
             />
-            <EmojiSuggestions />
-            <MentionSuggestions
-                open={open}
-                onOpenChange={onOpenChange}
-                suggestions={suggestions}
-                onSearchChange={onSearchChange}
-            />
-            <img src={GifIcon} />
-            <EmojiSelect />
-            <img src={AttachmentIcon} />
+            {!readOnly && (
+                <>
+                    <EmojiSuggestions />
+                    <MentionSuggestions
+                        open={open}
+                        onOpenChange={onOpenChange}
+                        suggestions={suggestions}
+                        onSearchChange={onSearchChange}
+                    />
+                    <img src={GifIcon} />
+                    <EmojiSelect />
+                    <img src={AttachmentIcon} />
+                </>
+            )}
         </div>
     );
 };

@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import EditorState from "draft-js/lib/EditorState";
+import { convertFromRaw } from "draft-js";
 
 import { withPostKudos } from "./withPostKudos";
 import PostHead from "./PostHead";
 import Kudos from "../Kudos";
 import PostBottom from "./PostBottom";
-import AddComment from "./AddComment";
+import AddComment from "../comment/AddComment";
+import TextArea from "../TextArea";
 
 const Post = ({ post }) => {
+    const [editorState, setEditorState] = useState(() => EditorState.createWithContent(convertFromRaw(post.content)));
+
     const PostKudosComponent = withPostKudos(Kudos);
     return (
         <div>
             <PostHead creationDate={post.creationDate} author={post.author} />
-            <p>{post.content}</p>
+            <TextArea editorState={editorState} readOnly={true} placeholder="" setEditorState={setEditorState} />
             <PostKudosComponent kudos={post.kudos} person={post.person} />
             <PostBottom likes={post.likes} comments={post.comments} group={post.group} />
             <AddComment />

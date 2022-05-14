@@ -12,11 +12,19 @@ const Posts = () => {
         setPostsData(postsJsonData);
     }, []);
 
+    const addPost = (postFormData) => {
+        const post = {
+            ...postFormData,
+            id: postsData.length + 1
+        }
+        setPostsData((prevPostsData) => [...prevPostsData, post]);
+    };
+
     const postsSection = postsData.map((post) => <Post key={post.id} post={post} />);
 
     return (
         <>
-            <AddPostForm />
+            <AddPostForm addPost={addPost} />
             <main>
                 <AddPostButton />
                 <section>{postsSection}</section>

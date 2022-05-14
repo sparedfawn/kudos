@@ -11,7 +11,12 @@ const AddComment = () => {
     return (
         <section>
             <img src={loggedInUserData.photo} />
-            <TextArea editorState={editorState} setEditorState={setEditorState} />
+            <TextArea
+                editorState={editorState}
+                setEditorState={setEditorState}
+                placeholder="Napisz komentarz"
+                readOnly={false}
+            />
         </section>
     );
 };
