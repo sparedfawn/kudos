@@ -64,17 +64,17 @@ const AddPostForm = ({ addPost }) => {
             likes: 0,
             comments: [],
             person: handleMentions(editorState, formState.removedFromMentions)[0],
-            group: groupsData.find(group => group.id === formState.groupId),
-            kudos: kudosTemplatesData.find(kudos => kudos.id === formState.kudosId)
-        }
-        console.log('to przechodzi')
-        addPost(postFormData)
-    }
+            group: groupsData.find((group) => group.id === formState.groupId),
+            kudos: kudosTemplatesData.find((kudos) => kudos.id === formState.kudosId),
+        };
+        console.log("to przechodzi");
+        addPost(postFormData);
+    };
 
     const mentions = handleMentions(editorState, formState.removedFromMentions);
 
     return (
-        <main>
+        <main className="add-post">
             <AddPostHead />
             <AddPostTextSection editorState={editorState} setEditorState={setEditorState} />
             {/* <Editor editorState={editorState} readOnly/> */}
@@ -84,8 +84,10 @@ const AddPostForm = ({ addPost }) => {
                 pickedKudosId={formState.kudosId}
                 kudosTemplates={kudosTemplatesData}
             />
-            <AddPostBottom handlePickingGroup={handlePickingGroup} groups={groupsData} />
-            <button onClick={handlePublishingPost}>Opublikuj</button>
+            <section className="pick-group-submit">
+                <AddPostBottom handlePickingGroup={handlePickingGroup} groups={groupsData} />
+                <button onClick={handlePublishingPost}>Opublikuj</button>
+            </section>
         </main>
     );
 };

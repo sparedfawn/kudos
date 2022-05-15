@@ -41,7 +41,7 @@ const TextArea = ({ editorState, setEditorState, readOnly, placeholder }) => {
     }, []);
 
     return (
-        <div>
+        <div className="text-area">
             <Editor
                 editorState={editorState}
                 onChange={handleTextEditorValueChange}
@@ -50,7 +50,7 @@ const TextArea = ({ editorState, setEditorState, readOnly, placeholder }) => {
                 readOnly={readOnly}
             />
             {!readOnly && (
-                <>
+                <div className="text-area-tools">
                     <EmojiSuggestions />
                     <MentionSuggestions
                         open={open}
@@ -58,10 +58,10 @@ const TextArea = ({ editorState, setEditorState, readOnly, placeholder }) => {
                         suggestions={suggestions}
                         onSearchChange={onSearchChange}
                     />
-                    <img src={GifIcon} />
+                    <img src={GifIcon} className="gif-icon" />
                     <EmojiSelect />
-                    <img src={AttachmentIcon} />
-                </>
+                    <img src={AttachmentIcon} className="attachment-icon" />
+                </div>
             )}
         </div>
     );

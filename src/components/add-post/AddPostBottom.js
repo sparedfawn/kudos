@@ -10,10 +10,15 @@ const AddPostBottom = ({ handlePickingGroup, groups }) => {
     });
 
     return (
-        <section>
+        <div>
             <h5>Wybierz grupę</h5>
-            <select onChange={handlePickingGroup}>{groupsSelectOptions}</select>
-        </section>
+            <select onChange={handlePickingGroup}>
+                <option disabled selected value>
+                    Wybierz grupę
+                </option>
+                {groupsSelectOptions}
+            </select>
+        </div>
     );
 };
 

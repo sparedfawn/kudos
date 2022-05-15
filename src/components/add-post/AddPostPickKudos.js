@@ -1,11 +1,8 @@
 import React from "react";
 
-import { withAddPostKudos } from "./withAddPostKudos";
 import Kudos from "../Kudos";
 
 const AddPostPickKudos = ({ handlePickingKudos, pickedKudosId, kudosTemplates }) => {
-    const AddPostKudosComponent = withAddPostKudos(Kudos);
-
     const kudosExamplePerson = {
         firstName: "Imie",
         lastName: "Nazwisko",
@@ -13,16 +10,21 @@ const AddPostPickKudos = ({ handlePickingKudos, pickedKudosId, kudosTemplates })
 
     const kudosSection = kudosTemplates.map((kudos) => {
         return (
-            <div
-                className={pickedKudosId === kudos.id ? "current-kudos" : "kudos"}
-                onClick={() => handlePickingKudos(kudos.id)}
+            <Kudos
                 key={kudos.id}
-            >
-                <AddPostKudosComponent kudos={kudos} person={kudosExamplePerson} />
-            </div>
+                className={pickedKudosId === kudos.id ? "add-post-kudos current-kudos" : "add-post-kudos"}
+                kudos={kudos}
+                person={kudosExamplePerson}
+                onClick={() => handlePickingKudos(kudos.id)}
+            />
         );
     });
-    return <section>{kudosSection}</section>;
+    return (
+        <section>
+            <h5>Wybierz kudos</h5>
+            {kudosSection}
+        </section>
+    );
 };
 
 export default AddPostPickKudos;

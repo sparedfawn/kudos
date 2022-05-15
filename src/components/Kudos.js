@@ -1,14 +1,17 @@
 import React from "react";
 
-const Kudos = ({ kudos, person, className }) => {
+const Kudos = ({ kudos, person, className, onClick }) => {
     return (
-        <section className={className}>
-            <img src={kudos.image}/>
-            <p>{kudos.description}</p>
-            <h5>{person.firstName} {person.lastName}</h5>
-        </section>
+        <div onClick={onClick} className={className}>
+            <img src={kudos.image} />
+            <div>
+                <p>{kudos.description}</p>
+                <h5>
+                    {person.firstName} {person.lastName}
+                </h5>
+            </div>
+        </div>
     );
 };
-
 
 export default Kudos;
