@@ -1,6 +1,7 @@
 import React from "react";
 
 const Kudos = ({ kudos, person, className, onClick }) => {
+    console.log(person)
     return (
         <div onClick={onClick} className={className}>
             <img src={kudos.image} />

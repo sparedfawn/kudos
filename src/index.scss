@@ -68,10 +68,42 @@ body {
 // ADD POST
 
 .add-post {
+    box-sizing: border-box;
+    position: absolute;
+    left: -564px;
     font-size: 14px;
     background-color: white;
-    max-width: 500px;
+    width: 564px;
     padding: 32px;
+}
+
+.add-post-off-screen {
+    animation-name: addPostExit;
+    animation-duration: 0.75s;
+}
+
+.add-post-on-screen {
+    left: 0px;
+    animation-name: addPostEntrence;
+    animation-duration: 0.75s;
+}
+
+@keyframes addPostEntrence {
+    from {
+        left: -564px;
+    }
+    to {
+        left: 0px;
+    }
+}
+
+@keyframes addPostExit {
+    from {
+        left: 0px;
+    }
+    to {
+        left: -564px;
+    }
 }
 
 .add-post-head-section {
@@ -83,6 +115,14 @@ body {
         margin-right: auto;
         font-size: 14px;
         font-weight: 600;
+    }
+    button {
+        border: none;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -170,4 +210,21 @@ body {
         grid-column: 3 / span 1;
         grid-row: 2 / span 1;
     }
+}
+
+// MAIN PAGE
+
+.main-page {
+    width: 564px;
+}
+
+// ROOT
+
+#root {
+    display: flex;
+}
+
+.covering-container {
+    height: 100%;
+    width: auto;
 }

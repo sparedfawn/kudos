@@ -4,7 +4,7 @@ import { EditorState, convertToRaw } from "draft-js";
 import AddPostHead from "./AddPostHead";
 import AddPostTextSection from "./AddPostTextSection";
 import AddPostPickKudos from "./AddPostPickKudos";
-import AddPostBottom from "./AddPostBottom";
+import AddPostPickGroup from "./AddPostPickGroup";
 import AddPostMentions from "./AddPostMentions";
 import { LoggedInUserContext } from "../../context/LoggedInUserContext";
 
@@ -63,18 +63,18 @@ const AddPostForm = ({ addPost }) => {
             content: convertToRaw(editorState.getCurrentContent()),
             likes: 0,
             comments: [],
-            person: handleMentions(editorState, formState.removedFromMentions)[0],
+            person: mentions[0],
             group: groupsData.find((group) => group.id === formState.groupId),
             kudos: kudosTemplatesData.find((kudos) => kudos.id === formState.kudosId),
         };
-        console.log("to przechodzi");
+        console.log(postFormData.content)
         addPost(postFormData);
     };
 
     const mentions = handleMentions(editorState, formState.removedFromMentions);
 
     return (
-        <main className="add-post">
+        <main id="add-post-container" className="add-post">
             <AddPostHead />
             <AddPostTextSection editorState={editorState} setEditorState={setEditorState} />
             {/* <Editor editorState={editorState} readOnly/> */}
@@ -85,7 +85,7 @@ const AddPostForm = ({ addPost }) => {
                 kudosTemplates={kudosTemplatesData}
             />
             <section className="pick-group-submit">
-                <AddPostBottom handlePickingGroup={handlePickingGroup} groups={groupsData} />
+                <AddPostPickGroup handlePickingGroup={handlePickingGroup} groups={groupsData} />
                 <button onClick={handlePublishingPost}>Opublikuj</button>
             </section>
         </main>

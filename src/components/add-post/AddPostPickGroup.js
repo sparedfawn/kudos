@@ -1,6 +1,6 @@
 import React from "react";
 
-const AddPostBottom = ({ handlePickingGroup, groups }) => {
+const AddPostPickGroup = ({ handlePickingGroup, groups }) => {
     const groupsSelectOptions = groups.map((group) => {
         return (
             <option value={group.id} key={group.id}>
@@ -10,16 +10,16 @@ const AddPostBottom = ({ handlePickingGroup, groups }) => {
     });
 
     return (
-        <div>
+        <>
             <h5>Wybierz grupę</h5>
-            <select onChange={handlePickingGroup}>
-                <option disabled selected value>
+            <select onChange={handlePickingGroup} defaultValue="default">
+                <option disabled value="default">
                     Wybierz grupę
                 </option>
                 {groupsSelectOptions}
             </select>
-        </div>
+        </>
     );
 };
 
-export default AddPostBottom;
+export default AddPostPickGroup;

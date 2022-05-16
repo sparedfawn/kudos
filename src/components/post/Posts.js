@@ -25,7 +25,7 @@ const Posts = () => {
     return (
         <>
             <AddPostForm addPost={addPost} />
-            <main>
+            <main className="main-page">
                 <AddPostButton />
                 <section>{postsSection}</section>
             </main>
