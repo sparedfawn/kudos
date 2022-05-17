@@ -10,6 +10,11 @@ const AddPostButton = () => {
         const addPostFormSection = document.getElementById("add-post-container")
         addPostFormSection.classList.add("add-post-on-screen")
         addPostFormSection.classList.remove("add-post-off-screen")
+
+        const mainPage = document.getElementById("main-page");
+        setTimeout(() => {
+            mainPage.style.display = "none";
+        }, 750);
     }
 
     return (

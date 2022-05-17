@@ -46,12 +46,11 @@ const AddPostForm = ({ addPost }) => {
         });
     };
 
-    const handlePickingGroup = (event) => {
-        const { value } = event.target;
+    const handlePickingGroup = (pickedId) => {
         setFormState((prevFormState) => {
             return {
                 ...prevFormState,
-                groupId: value,
+                groupId: pickedId,
             };
         });
     };
@@ -67,7 +66,6 @@ const AddPostForm = ({ addPost }) => {
             group: groupsData.find((group) => group.id === formState.groupId),
             kudos: kudosTemplatesData.find((kudos) => kudos.id === formState.kudosId),
         };
-        console.log(postFormData.content)
         addPost(postFormData);
     };
 
@@ -77,7 +75,6 @@ const AddPostForm = ({ addPost }) => {
         <main id="add-post-container" className="add-post">
             <AddPostHead />
             <AddPostTextSection editorState={editorState} setEditorState={setEditorState} />
-            {/* <Editor editorState={editorState} readOnly/> */}
             <AddPostMentions mentions={mentions} handleRemovingFromMentions={handleRemovingFromMentions} />
             <AddPostPickKudos
                 handlePickingKudos={handlePickingKudos}
@@ -85,8 +82,8 @@ const AddPostForm = ({ addPost }) => {
                 kudosTemplates={kudosTemplatesData}
             />
             <section className="pick-group-submit">
-                <AddPostPickGroup handlePickingGroup={handlePickingGroup} groups={groupsData} />
-                <button onClick={handlePublishingPost}>Opublikuj</button>
+                <AddPostPickGroup currentGroupId={formState.groupId} handlePickingGroup={handlePickingGroup} groups={groupsData} />
+                <button className="submit-button" onClick={handlePublishingPost}>Opublikuj</button>
             </section>
         </main>
     );

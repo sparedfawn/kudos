@@ -1,5 +1,6 @@
 import React, { useCallback, useState, useMemo } from "react";
 import Editor from "@draft-js-plugins/editor";
+import { Modifier } from "draft-js";
 import createEmojiPlugin from "@draft-js-plugins/emoji";
 import createHashtagPlugin from "@draft-js-plugins/hashtag";
 import createMentionPlugin, { defaultSuggestionsFilter } from "@draft-js-plugins/mention";
@@ -11,10 +12,13 @@ import "@draft-js-plugins/mention/lib/plugin.css";
 import GifIcon from "../icons/gif.svg";
 import AttachmentIcon from "../icons/attachment.svg";
 import mentions from "./mentions";
+import { EditorState } from "draft-js";
 
-const TextArea = ({ editorState, setEditorState, readOnly, placeholder }) => {
+const TextArea = ({ editorState, setEditorState, readOnly, placeholder, characterLimit }) => {
     const [open, setOpen] = useState(false);
     const [suggestions, setSuggestions] = useState(mentions);
+
+    const characterNumber = editorState.getCurrentContent().getPlainText("").length;
 
     const { plugins, EmojiSuggestions, EmojiSelect, MentionSuggestions } = useMemo(() => {
         const mentionPlugin = createMentionPlugin();
@@ -29,7 +33,35 @@ const TextArea = ({ editorState, setEditorState, readOnly, placeholder }) => {
     }, []);
 
     const handleTextEditorValueChange = (value) => {
+        document.getElementById("character-count").classList.remove("limit-matched");
         setEditorState(value);
+    };
+
+    const handleBeforeInput = (input) => {
+        if (characterLimit !== undefined) {
+            if (input && characterNumber >= characterLimit) {
+                document.getElementById("character-count").classList.add("limit-matched");
+                return "handled";
+            }
+        }
+        document.getElementById("character-count").classList.remove("limit-matched");
+        return "not-handled";
+    };
+
+    const handlePastedText = (input) => {
+        const remainingLength = characterLimit - characterNumber;
+        if (input.length + characterNumber >= characterLimit) {
+            const newContent = Modifier.insertText(
+                editorState.getCurrentContent(),
+                editorState.getSelection(),
+                input.slice(0, remainingLength)
+            );
+            handleTextEditorValueChange(EditorState.push(editorState, newContent, "insert-characters"));
+            document.getElementById("character-count").classList.add("limit-matched");
+            return "handled";
+        } else {
+            return "not-handled";
+        }
     };
 
     const onOpenChange = useCallback((open) => {
@@ -48,6 +80,8 @@ const TextArea = ({ editorState, setEditorState, readOnly, placeholder }) => {
                 plugins={plugins}
                 placeholder={placeholder}
                 readOnly={readOnly}
+                handleBeforeInput={handleBeforeInput}
+                handlePastedText={handlePastedText}
             />
             {!readOnly && (
                 <div className="text-area-tools">
@@ -58,6 +92,12 @@ const TextArea = ({ editorState, setEditorState, readOnly, placeholder }) => {
                         suggestions={suggestions}
                         onSearchChange={onSearchChange}
                     />
+                    {characterLimit && (
+                        <span id="character-count" className="character-count">
+                            {characterNumber}/{characterLimit}
+                        </span>
+                    )}
+
                     <img src={GifIcon} className="gif-icon" />
                     <EmojiSelect />
                     <img src={AttachmentIcon} className="attachment-icon" />

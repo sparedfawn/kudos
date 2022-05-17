@@ -3,7 +3,10 @@
 body {
     margin: 0;
     background-color: #fbfbfb;
-    color: #616161;
+}
+
+#root {
+    overflow: hidden;
 }
 
 * {
@@ -11,6 +14,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
+    padding: 0;
 }
 
 .public-DraftEditorPlaceholder-root {
@@ -18,63 +22,136 @@ body {
     pointer-events: none;
 }
 
+.border-gold {
+    border: 1px solid #a8996f;
+}
+
+.border-light-gray {
+    border: 1px solid #eeeeee;
+}
+
+.text-dark {
+    color: #333333;
+}
+
+.text-gray {
+    color: #707070;
+}
+
+.text-dark-gray {
+    color: #616161;
+}
+
+.text-gold {
+    color: #a8996f;
+}
+
+.text-error {
+    color: #e53935;
+}
+
+.background-light-gray {
+    background-color: #eeeeee;
+}
+
+.background-white {
+    background-color: white;
+}
+
+.background-dark-purple {
+    background-color: #96459A;
+}
+
+.background-purple {
+    background-color: #96459A;
+}
+
+.background-gold {
+    background-color: #A8996F;
+}
+
+.section-title {
+    @extend .text-dark-gray;
+    font-size: 14px;
+    font-weight: 600;
+}
+
 // TEXT AREA
 
 .text-area {
-    border: 1px solid #eeeeee;
+    @extend .border-light-gray;
+    @extend .text-dark;
     border-radius: 5px;
     padding: 5px;
+    // mention
     .m6zwb4v {
-        color: #a8996f;
+        @extend .text-gold;
         background-color: inherit;
     }
     .text-area-tools {
         display: flex;
         justify-content: flex-end;
+        align-items: flex-end;
         .gif-icon,
         .attachment-icon {
+            @extend .background-light-gray;
             height: 14px;
             width: 14px;
             padding: 5px;
-            background-color: #e5e1e1;
             border-radius: 4px;
+            margin-left: 8px;
+            margin-right: 8px;
         }
-        // emote picker class
+        .limit-matched {
+            @extend .text-error;
+            font-weight: 600;
+        }
+        // emote picker button container
         .e183m4hm {
             height: 24px;
             width: 24px;
             border-radius: 4px;
-            margin-left: 5px;
-            margin-right: 5px;
             // button not clicked, button clicked
             .e8k2yoa,
             .e13wqaj6 {
-                background-color: #e5e1e1;
+                @extend .background-light-gray;
+                @extend .text-dark-gray;
                 border-radius: inherit;
                 height: 100%;
                 width: 100%;
                 font-size: 22px;
                 border: none;
-                line-height: 24px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                padding-bottom: 3px;
+                padding-bottom: 2px;
             }
         }
+        // emote list container
+        .ejr02pv {
+            right: 32px;
+        }
     }
+}
+
+// KUDOS
+
+.kudos {
+    @extend .border-light-gray;
+    border-radius: 6px;
 }
 
 // ADD POST
 
 .add-post {
+    @extend .background-white;
     box-sizing: border-box;
     position: absolute;
     left: -564px;
     font-size: 14px;
-    background-color: white;
     width: 564px;
     padding: 32px;
+    overflow: auto;
 }
 
 .add-post-off-screen {
@@ -109,17 +186,17 @@ body {
 .add-post-head-section {
     display: flex;
     align-items: center;
-    margin-bottom: 22px;
-    h3 {
+    margin-bottom: 20px;
+    h5.section-title {
         margin-left: 8px;
         margin-right: auto;
-        font-size: 14px;
-        font-weight: 600;
+        text-transform: uppercase;
     }
-    button {
+    button.close-page {
+        @extend .background-light-gray;
         border: none;
-        width: 24px;
-        height: 24px;
+        border-radius: 6px;
+        padding: 6px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -128,87 +205,142 @@ body {
 
 .add-post-text-section {
     margin-bottom: 24px;
-    h5 {
-        margin-bottom: 11px;
+    h5.section-title {
+        margin-bottom: 12px;
     }
 }
 
 .add-post-mentions {
-    h5 {
+    h5.section-title {
         margin-bottom: 8px;
     }
-    div {
-        border: 1px solid #eeeeee;
-        padding: 8px;
+    div.mentions-container {
+        @extend .border-light-gray;
         border-radius: 5px;
         .mention {
-            padding: 4px;
-            border: 1px solid #a8996f;
-            border-radius: 5px;
-            display: inline;
-            font-size: 14px;
-            font-weight: 400;
-            background-color: #e5e1e1;
-            button {
+            @extend .background-light-gray;
+            @extend .border-gold;
+            padding: 2px 8px;
+            margin: 4px;
+            border-radius: 6px;
+            display: inline-block;
+            span.mention-text {
+                @extend .text-dark;
+                font-size: 14px;
+                font-weight: 400;
+            }
+            button.mention-remove {
                 border: none;
                 background-color: inherit;
+                margin-left: 10px;
+                img {
+                    height: 8px;
+                    width: 8px;
+                    vertical-align: top;
+                }
             }
         }
     }
     margin-bottom: 24px;
 }
 
-.current-kudos {
-    display: grid;
-    grid-template-columns: 72px 1fr 72px;
-    padding: 20px;
-    img {
-        grid-column: 1 / span 1;
+.add-post-kudos-container {
+    h5.section-title {
+        margin-bottom: 24px;
     }
-    div {
-        grid-column: 2 / span 1;
+    div.add-post-kudos {
+        margin-bottom: 16px;
+        display: grid;
+        grid-template-columns: 72px 1fr 72px;
+        padding: 20px;
+        img.kudos-image {
+            grid-column: 1 / span 1;
+            align-self: center;
+        }
+        div.data-container {
+            @extend .text-dark-gray;
+            justify-self: center;
+            grid-column: 2 / span 1;
+            text-align: center;
+            p {
+                font-weight: 400;
+                font-size: 14px;
+            }
+            h5 {
+                font-weight: 600;
+                font-size: 14px;
+            }
+        }
+    }
+    div.picked-kudos {
+        @extend .border-gold;
+        @extend .background-light-gray;
     }
 }
 
-.add-post-kudos {
-    border: 1px solid #eeeeee;
-    border-radius: 6px;
-    margin-bottom: 16px;
+section.pick-group-submit {
     display: grid;
-    grid-template-columns: 72px 1fr 72px;
-    padding: 20px;
-    img {
-        grid-column: 1 / span 1;
-        align-self: center;
-    }
-    div {
-        justify-self: center;
-        grid-column: 2 / span 1;
-        text-align: center;
-    }
-}
-
-.current-kudos {
-    border: 1px solid #a8996f;
-    background-color: #eeeeee;
-}
-
-.pick-group-submit {
-    display: grid;
-    grid-template-columns: 190px 1fr 120px;
+    grid-template-columns: 180px 1fr 120px;
     grid-template-rows: 16px 32px;
     gap: 8px;
-    h5 {
+    h5.section-title {
         grid-column: 1 / span 1;
         grid-row: 1 / span 1;
     }
-    select {
+    div.group-picker-head {
+        @extend .border-light-gray;
         grid-column: 1 / span 1;
         grid-row: 2 / span 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 6px;
+        div {
+            @extend .text-dark-gray;
+        }
     }
-    button {
+    div.options-container {
+        position: absolute;
+        width: 180px;
+        bottom: 32px;
+        z-index: 10;
+        div.group {
+            @extend .border-light-gray;
+            background-color: white;
+            transition: background-color 0.1s ease-in-out;
+            &:hover {
+                @extend .background-purple;
+                color: white;
+            }
+        }
+    }
+    div.group {
+        display: flex;
+        align-items: center;
+        height: 32px;
+        img {
+            @extend .background-light-gray;
+            border-radius: 4px;
+            height: 24px;
+            margin: 4px;
+        }
+    }
+    button.submit-button {
+        @extend .background-dark-purple;
         grid-column: 3 / span 1;
         grid-row: 2 / span 1;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        color: white;
+        font-weight: 600;
+        font-size: 14px;
+        border: none;
+        border-radius: 6px;
+        transition: background-color 0.25s ease-in-out;
+        &:hover {
+            @extend .background-gold;
+        }
     }
 }
 
@@ -222,9 +354,4 @@ body {
 
 #root {
     display: flex;
-}
-
-.covering-container {
-    height: 100%;
-    width: auto;
 }

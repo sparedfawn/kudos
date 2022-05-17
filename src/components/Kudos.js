@@ -1,11 +1,10 @@
 import React from "react";
 
 const Kudos = ({ kudos, person, className, onClick }) => {
-    console.log(person)
     return (
-        <div onClick={onClick} className={className}>
-            <img src={kudos.image} />
-            <div>
+        <div className={`kudos ${className}`} onClick={onClick}>
+            <img className="kudos-image" src={kudos.image} />
+            <div className="data-container">
                 <p>{kudos.description}</p>
                 <h5>
                     {person.firstName} {person.lastName}

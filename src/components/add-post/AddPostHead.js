@@ -5,16 +5,19 @@ import CloseIcon from "../../icons/close.svg";
 
 const AddPostHead = () => {
     const handleClickingButton = () => {
-        const addPostFormSection = document.getElementById("add-post-container")
-        addPostFormSection.classList.remove("add-post-on-screen")
-        addPostFormSection.classList.add("add-post-off-screen")
-    }
-    
+        const mainPage = document.getElementById("main-page");
+        mainPage.style.display = "block";
+
+        const addPostFormSection = document.getElementById("add-post-container");
+        addPostFormSection.classList.remove("add-post-on-screen");
+        addPostFormSection.classList.add("add-post-off-screen");
+    };
+
     return (
         <section className="add-post-head-section">
             <img src={AgreementIcon} />
-            <h3>UTWÓRZ KUDOS</h3>
-            <button onClick={handleClickingButton}>
+            <h5 className="section-title text-uppercase">Utwórz kudos</h5>
+            <button className="close-page" onClick={handleClickingButton}>
                 <img src={CloseIcon} />
             </button>
         </section>

@@ -16,6 +16,7 @@ const AddComment = () => {
                 setEditorState={setEditorState}
                 placeholder="Napisz komentarz"
                 readOnly={false}
+                characterLimit={100}
             />
         </section>
     );

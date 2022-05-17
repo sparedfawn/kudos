@@ -12,7 +12,7 @@ const AddPostPickKudos = ({ handlePickingKudos, pickedKudosId, kudosTemplates })
         return (
             <Kudos
                 key={kudos.id}
-                className={pickedKudosId === kudos.id ? "add-post-kudos current-kudos" : "add-post-kudos"}
+                className={pickedKudosId === kudos.id ? "add-post-kudos picked-kudos" : "add-post-kudos"}
                 kudos={kudos}
                 person={kudosExamplePerson}
                 onClick={() => handlePickingKudos(kudos.id)}
@@ -20,8 +20,8 @@ const AddPostPickKudos = ({ handlePickingKudos, pickedKudosId, kudosTemplates })
         );
     });
     return (
-        <section>
-            <h5>Wybierz kudos</h5>
+        <section className="add-post-kudos-container">
+            <h5 className="section-title">Wybierz kudos</h5>
             {kudosSection}
         </section>
     );
