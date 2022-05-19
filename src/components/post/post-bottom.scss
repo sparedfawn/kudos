@@ -44,6 +44,9 @@ section.post-bottom {
             }
         }
         div.like-section {
+            svg {
+                transition: fill 0.5s;
+            }
             svg.liked {
                 @extend .paint-red;
             }

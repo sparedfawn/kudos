@@ -4,6 +4,7 @@
     @extend .background-white;
     box-sizing: border-box;
     position: absolute;
+    z-index: 10;
     left: -564px;
     font-size: 14px;
     width: 564px;

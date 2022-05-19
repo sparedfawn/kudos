@@ -14,7 +14,7 @@ const AddPostButton = () => {
 
         const mainPage = document.getElementById("main-page");
         setTimeout(() => {
-            addPostFormSection.style.position = "relative";
+            addPostFormSection.style.position = "static";
             mainPage.style.display = "none";
         }, 750);
     };
