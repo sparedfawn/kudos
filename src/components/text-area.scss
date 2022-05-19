@@ -1,0 +1,64 @@
+@use '../index.scss';
+
+.text-area {
+    @extend .border-light-gray;
+    @extend .text-dark;
+    border-radius: 5px;
+    padding: 5px;
+    // mention
+    .m6zwb4v {
+        @extend .text-gold;
+        background-color: inherit;
+    }
+    .text-area-tools {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        svg.gif-icon,
+        svg.attachment-icon {
+            @extend .background-light-gray;
+            height: 14px;
+            width: 14px;
+            padding: 5px;
+            border-radius: 4px;
+            margin-left: 8px;
+            margin-right: 8px;
+        }
+        .limit-matched {
+            @extend .text-error;
+            font-weight: 600;
+        }
+        // emote picker button container
+        .e183m4hm {
+            height: 24px;
+            width: 24px;
+            border-radius: 4px;
+            // button not clicked, button clicked
+            .e8k2yoa,
+            .e13wqaj6 {
+                @extend .background-light-gray;
+                @extend .text-dark-gray;
+                border-radius: inherit;
+                height: 100%;
+                width: 100%;
+                font-size: 22px;
+                border: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-bottom: 2px;
+            }
+        }
+        // emote list container
+        .ejr02pv {
+            //fixMe jak wejda klasy rozne to wtedy mozna zrobic rozne odleglosci
+            left: 200px;
+        }
+    }
+}
+
+// placeholder
+.public-DraftEditorPlaceholder-root {
+    position: absolute;
+    pointer-events: none;
+}

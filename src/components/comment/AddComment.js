@@ -3,18 +3,19 @@ import { EditorState } from "draft-js";
 
 import { LoggedInUserContext } from "../../context/LoggedInUserContext";
 import TextArea from "../TextArea";
+import "./add-comment.scss";
 
 const AddComment = () => {
     const { loggedInUserData } = useContext(LoggedInUserContext);
     const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
 
     return (
-        <section>
-            <img src={loggedInUserData.photo} />
+        <section className="add-comment">
+            <img className="face-photo" src={loggedInUserData.photo} />
             <TextArea
                 editorState={editorState}
                 setEditorState={setEditorState}
-                placeholder="Napisz komentarz"
+                placeholder="Napisz komentarz..."
                 readOnly={false}
                 characterLimit={100}
             />

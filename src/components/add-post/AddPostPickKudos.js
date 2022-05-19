@@ -1,11 +1,11 @@
 import React from "react";
 
 import Kudos from "../Kudos";
+import "./add-post-pick-kudos.scss";
 
 const AddPostPickKudos = ({ handlePickingKudos, pickedKudosId, kudosTemplates }) => {
     const kudosExamplePerson = {
-        firstName: "Imie",
-        lastName: "Nazwisko",
+        name: "Imie Nazwisko",
     };
 
     const kudosSection = kudosTemplates.map((kudos) => {

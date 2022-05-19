@@ -2,6 +2,8 @@ import React from "react";
 
 import TextArea from "../TextArea";
 
+import "./add-post-text-section.scss";
+
 const AddPostTextSection = ({ editorState, setEditorState }) => {
     return (
         <section className="add-post-text-section">
@@ -9,7 +11,7 @@ const AddPostTextSection = ({ editorState, setEditorState }) => {
             <TextArea
                 placeholder="Napisz post..."
                 readOnly={false}
-                characterLimit={30}
+                characterLimit={500}
                 editorState={editorState}
                 setEditorState={setEditorState}
             />

@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./kudos.scss";
+
 const Kudos = ({ kudos, person, className, onClick }) => {
     return (
         <div className={`kudos ${className}`} onClick={onClick}>
@@ -7,7 +9,7 @@ const Kudos = ({ kudos, person, className, onClick }) => {
             <div className="data-container">
                 <p>{kudos.description}</p>
                 <h5>
-                    {person.firstName} {person.lastName}
+                    {person.name}
                 </h5>
             </div>
         </div>

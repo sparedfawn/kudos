@@ -1,7 +1,8 @@
 import React from "react";
 
-import AgreementIcon from "../../icons/agreement_purple.svg";
-import CloseIcon from "../../icons/close.svg";
+import { ReactComponent as AgreementIcon } from "../../icons/agreement_purple.svg";
+import { ReactComponent as CloseIcon } from "../../icons/close.svg";
+import "./add-post-head.scss";
 
 const AddPostHead = () => {
     const handleClickingButton = () => {
@@ -15,10 +16,10 @@ const AddPostHead = () => {
 
     return (
         <section className="add-post-head-section">
-            <img src={AgreementIcon} />
+            <AgreementIcon />
             <h5 className="section-title text-uppercase">Utwórz kudos</h5>
             <button className="close-page" onClick={handleClickingButton}>
-                <img src={CloseIcon} />
+                <CloseIcon />
             </button>
         </section>
     );

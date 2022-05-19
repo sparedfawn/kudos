@@ -1,0 +1,61 @@
+@use '../index.scss';
+
+.kudos {
+    @extend .border-light-gray;
+    border-radius: 6px;
+    div.data-container {
+        text-align: center;
+    }
+}
+
+.post-kudos {
+    margin-top: 24px;
+    display: grid;
+    padding: 32px;
+    grid-template-columns: 1fr 2fr;
+    img.kudos-image {
+        grid-column: 1 / span 1;
+        width: 120px;
+    }
+    div.data-container {
+        @extend .text-dark;
+        grid-column: 2 / span 1;
+        align-self: center;
+        p {
+            font-size: 16px;
+            font-weight: 400;
+        }
+        h5 {
+            font-size: 24px;
+            font-weight: 700;
+        }
+    }
+}
+
+div.add-post-kudos {
+    margin-bottom: 16px;
+    display: grid;
+    grid-template-columns: 72px 1fr 72px;
+    padding: 20px;
+    img.kudos-image {
+        grid-column: 1 / span 1;
+        align-self: center;
+    }
+    div.data-container {
+        @extend .text-dark-gray;
+        justify-self: center;
+        grid-column: 2 / span 1;
+        p {
+            font-weight: 400;
+            font-size: 14px;
+        }
+        h5 {
+            font-weight: 600;
+            font-size: 14px;
+        }
+    }
+}
+div.picked-kudos {
+    @extend .border-gold;
+    @extend .background-light-gray;
+}

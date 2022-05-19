@@ -1,0 +1,21 @@
+@use "../../index.scss";
+
+.add-post-head-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    h5.section-title {
+        margin-left: 8px;
+        margin-right: auto;
+        text-transform: uppercase;
+    }
+    button.close-page {
+        @extend .background-light-gray;
+        border: none;
+        border-radius: 6px;
+        padding: 6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

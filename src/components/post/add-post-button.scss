@@ -1,0 +1,22 @@
+@use "../../index.scss";
+
+.add-post-button {
+    @extend .background-white;
+    @extend .border-light-gray;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 8px 16px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    img.face-photo {
+        height: 40px;
+        border-radius: 50%;
+    }
+    span.add-post-button-text {
+        @extend .text-gray;
+        font-size: 14px;
+        margin-left: 8px;
+        margin-right: auto;
+    }
+}

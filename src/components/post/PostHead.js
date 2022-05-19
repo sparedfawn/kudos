@@ -1,19 +1,22 @@
 import React from "react";
 import moment from "moment";
 
-import AgreementIcon from "../../icons/agreement.svg";
+import { ReactComponent as AgreementIcon } from "../../icons/agreement.svg";
+import "./post-head.scss";
 
 const PostHead = ({ creationDate, author }) => {
     const timeSincePostCreation = moment(creationDate, "YYYY-MM-DDTh:mm").fromNow();
 
     return (
-        <section>
-            <div>
-                <img src={author.photo} />
-                <h5>{author.firstName} {author.lastName}</h5>
-                <p>{timeSincePostCreation}</p>
+        <section className="post-head">
+            <div className="post-head-data-container">
+                <img className="post-author-photo" src={author.photo} />
+                <h5 className="post-author">
+                    {author.firstName} {author.lastName}
+                </h5>
+                <p className="post-time-passed">{timeSincePostCreation}</p>
             </div>
-            <img src={AgreementIcon} />
+            <AgreementIcon className="post-agreement-icon" />
         </section>
     );
 };

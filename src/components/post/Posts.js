@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Post from "./Post";
 import AddPostButton from "./AddPostButton";
 import AddPostForm from "../add-post/AddPostForm";
+import "./posts.scss";
 
 const Posts = () => {
     const [postsData, setPostsData] = useState([]);
@@ -15,8 +16,8 @@ const Posts = () => {
     const addPost = (postFormData) => {
         const post = {
             ...postFormData,
-            id: postsData.length + 1
-        }
+            id: postsData.length + 1,
+        };
         setPostsData((prevPostsData) => [...prevPostsData, post]);
     };
 

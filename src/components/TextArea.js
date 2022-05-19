@@ -9,10 +9,12 @@ import "@draft-js-plugins/emoji/lib/plugin.css";
 import "@draft-js-plugins/hashtag/lib/plugin.css";
 import "@draft-js-plugins/mention/lib/plugin.css";
 
-import GifIcon from "../icons/gif.svg";
-import AttachmentIcon from "../icons/attachment.svg";
-import mentions from "./mentions";
+import { ReactComponent as GifIcon } from "../icons/gif.svg";
+import { ReactComponent as AttachmentIcon } from "../icons/attachment.svg";
+import mentions from "../data/mentions";
 import { EditorState } from "draft-js";
+
+import "./text-area.scss";
 
 const TextArea = ({ editorState, setEditorState, readOnly, placeholder, characterLimit }) => {
     const [open, setOpen] = useState(false);
@@ -98,9 +100,9 @@ const TextArea = ({ editorState, setEditorState, readOnly, placeholder, characte
                         </span>
                     )}
 
-                    <img src={GifIcon} className="gif-icon" />
+                    <GifIcon className="gif-icon" />
                     <EmojiSelect />
-                    <img src={AttachmentIcon} className="attachment-icon" />
+                    <AttachmentIcon className="attachment-icon" />
                 </div>
             )}
         </div>

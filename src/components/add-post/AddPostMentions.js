@@ -1,13 +1,14 @@
 import React from "react";
 
-import CloseIcon from "../../icons/close.svg"
+import { ReactComponent as CloseIcon } from "../../icons/close.svg";
+import "./add-post-mentions.scss";
 
 const AddPostMentions = ({ mentions, handleRemovingFromMentions }) => {
     const mentionsSection = mentions.map((mention) => (
         <div key={mention.id} className="mention">
             <span className="mention-text">{mention.name}</span>
             <button className="mention-remove" onClick={() => handleRemovingFromMentions(mention)}>
-                <img src={CloseIcon}/>
+                <CloseIcon className="close-icon" />
             </button>
         </div>
     ));

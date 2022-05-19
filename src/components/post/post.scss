@@ -1,0 +1,9 @@
+@use "../../index.scss";
+
+div.post-container {
+    @extend .background-white;
+    @extend .border-light-gray;
+    padding: 16px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}

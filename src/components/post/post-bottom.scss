@@ -1,0 +1,58 @@
+@use "../../index.scss";
+
+section.post-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+    span.group {
+        @extend .text-gold;
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        font-weight: 600;
+        svg.office-icon {
+            @extend .background-light-gray;
+            @extend .paint-gold;
+            padding: 4px;
+            border-radius: 6px;
+            margin-right: 8px;
+        }
+    }
+    div.stat-section {
+        @extend .text-gold;
+        display: flex;
+        button {
+            @extend .background-white;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        div.like-section,
+        div.comment-section {
+            display: flex;
+            align-items: center;
+            margin-left: 6px;
+            margin-right: 6px;
+            svg {
+                @extend .paint-light-gray;
+            }
+            span {
+                @extend .text-gold;
+                margin-left: 4px;
+            }
+        }
+        div.like-section {
+            svg.liked {
+                @extend .paint-red;
+            }
+        }
+        button.more {
+            margin-left: 16px;
+            svg {
+                @extend .paint-gold;
+            }
+        }
+    }
+}

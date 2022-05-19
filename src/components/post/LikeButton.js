@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 
-import HeartIcon from "../../icons/heart.svg";
+import { ReactComponent as HeartIcon } from "../../icons/heart.svg";
 
-const LikeButton = ({setLikes}) => {
+const LikeButton = ({ setLikes }) => {
     const [liked, setLiked] = useState(false);
 
     const toggleLikeButton = () => {
-        setLikes(prevLikes => liked ? prevLikes - 1 : prevLikes + 1)
-        setLiked(prevLikedState => !prevLikedState);
-    }
+        setLikes((prevLikes) => (liked ? prevLikes - 1 : prevLikes + 1));
+        setLiked((prevLikedState) => !prevLikedState);
+    };
     return (
-        <button onClick={toggleLikeButton}>
-            <img src={HeartIcon} />
+        <button className="like-button" onClick={toggleLikeButton}>
+            <HeartIcon className={liked ? "liked" : "not-liked"}/>
         </button>
     );
 };

@@ -1,0 +1,40 @@
+@use "../../index.scss";
+
+section.post-head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 38px;
+    div.post-head-data-container {
+        display: grid;
+        grid-template-columns: 40px 1fr;
+        grid-template-rows: 24px 16px;
+        gap: 0px 8px;
+        img.post-author-photo {
+            grid-column: 1 / span 1;
+            grid-row: 1 / span 2;
+            height: 40px;
+            border-radius: 50%;
+            align-self: center;
+        }
+        h5.post-author {
+            grid-column: 2 / span 1;
+            grid-row: 1 / span 1;
+            @extend .text-dark;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        p.post-time-passed {
+            grid-column: 2 / span 1;
+            grid-row: 2 / span 1;
+            @extend .text-gray;
+            font-weight: 400;
+            font-size: 14px;
+        }
+    }
+    svg.post-agreement-icon {
+        @extend .background-light-gray;
+        height: 18px;
+        padding: 3px;
+        border-radius: 6px;
+    }
+}

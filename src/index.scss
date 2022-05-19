@@ -5,10 +5,6 @@ body {
     background-color: #fbfbfb;
 }
 
-#root {
-    overflow: hidden;
-}
-
 * {
     font-family: "Poppins", sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -17,9 +13,8 @@ body {
     padding: 0;
 }
 
-.public-DraftEditorPlaceholder-root {
-    position: absolute;
-    pointer-events: none;
+#root {
+    display: flex;
 }
 
 .border-gold {
@@ -59,299 +54,35 @@ body {
 }
 
 .background-dark-purple {
-    background-color: #96459A;
+    background-color: #96459a;
 }
 
 .background-purple {
-    background-color: #96459A;
+    background-color: #96459a;
 }
 
 .background-gold {
-    background-color: #A8996F;
+    background-color: #a8996f;
+}
+
+.paint-dark-purple {
+    fill: #78107e;
+}
+
+.paint-gold {
+    fill: #a8996f;
+}
+
+.paint-light-gray {
+    fill: #eeeeee;
+}
+
+.paint-red {
+    fill: #e53935;
 }
 
 .section-title {
     @extend .text-dark-gray;
     font-size: 14px;
     font-weight: 600;
-}
-
-// TEXT AREA
-
-.text-area {
-    @extend .border-light-gray;
-    @extend .text-dark;
-    border-radius: 5px;
-    padding: 5px;
-    // mention
-    .m6zwb4v {
-        @extend .text-gold;
-        background-color: inherit;
-    }
-    .text-area-tools {
-        display: flex;
-        justify-content: flex-end;
-        align-items: flex-end;
-        .gif-icon,
-        .attachment-icon {
-            @extend .background-light-gray;
-            height: 14px;
-            width: 14px;
-            padding: 5px;
-            border-radius: 4px;
-            margin-left: 8px;
-            margin-right: 8px;
-        }
-        .limit-matched {
-            @extend .text-error;
-            font-weight: 600;
-        }
-        // emote picker button container
-        .e183m4hm {
-            height: 24px;
-            width: 24px;
-            border-radius: 4px;
-            // button not clicked, button clicked
-            .e8k2yoa,
-            .e13wqaj6 {
-                @extend .background-light-gray;
-                @extend .text-dark-gray;
-                border-radius: inherit;
-                height: 100%;
-                width: 100%;
-                font-size: 22px;
-                border: none;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding-bottom: 2px;
-            }
-        }
-        // emote list container
-        .ejr02pv {
-            right: 32px;
-        }
-    }
-}
-
-// KUDOS
-
-.kudos {
-    @extend .border-light-gray;
-    border-radius: 6px;
-}
-
-// ADD POST
-
-.add-post {
-    @extend .background-white;
-    box-sizing: border-box;
-    position: absolute;
-    left: -564px;
-    font-size: 14px;
-    width: 564px;
-    padding: 32px;
-    overflow: auto;
-}
-
-.add-post-off-screen {
-    animation-name: addPostExit;
-    animation-duration: 0.75s;
-}
-
-.add-post-on-screen {
-    left: 0px;
-    animation-name: addPostEntrence;
-    animation-duration: 0.75s;
-}
-
-@keyframes addPostEntrence {
-    from {
-        left: -564px;
-    }
-    to {
-        left: 0px;
-    }
-}
-
-@keyframes addPostExit {
-    from {
-        left: 0px;
-    }
-    to {
-        left: -564px;
-    }
-}
-
-.add-post-head-section {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    h5.section-title {
-        margin-left: 8px;
-        margin-right: auto;
-        text-transform: uppercase;
-    }
-    button.close-page {
-        @extend .background-light-gray;
-        border: none;
-        border-radius: 6px;
-        padding: 6px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-}
-
-.add-post-text-section {
-    margin-bottom: 24px;
-    h5.section-title {
-        margin-bottom: 12px;
-    }
-}
-
-.add-post-mentions {
-    h5.section-title {
-        margin-bottom: 8px;
-    }
-    div.mentions-container {
-        @extend .border-light-gray;
-        border-radius: 5px;
-        .mention {
-            @extend .background-light-gray;
-            @extend .border-gold;
-            padding: 2px 8px;
-            margin: 4px;
-            border-radius: 6px;
-            display: inline-block;
-            span.mention-text {
-                @extend .text-dark;
-                font-size: 14px;
-                font-weight: 400;
-            }
-            button.mention-remove {
-                border: none;
-                background-color: inherit;
-                margin-left: 10px;
-                img {
-                    height: 8px;
-                    width: 8px;
-                    vertical-align: top;
-                }
-            }
-        }
-    }
-    margin-bottom: 24px;
-}
-
-.add-post-kudos-container {
-    h5.section-title {
-        margin-bottom: 24px;
-    }
-    div.add-post-kudos {
-        margin-bottom: 16px;
-        display: grid;
-        grid-template-columns: 72px 1fr 72px;
-        padding: 20px;
-        img.kudos-image {
-            grid-column: 1 / span 1;
-            align-self: center;
-        }
-        div.data-container {
-            @extend .text-dark-gray;
-            justify-self: center;
-            grid-column: 2 / span 1;
-            text-align: center;
-            p {
-                font-weight: 400;
-                font-size: 14px;
-            }
-            h5 {
-                font-weight: 600;
-                font-size: 14px;
-            }
-        }
-    }
-    div.picked-kudos {
-        @extend .border-gold;
-        @extend .background-light-gray;
-    }
-}
-
-section.pick-group-submit {
-    display: grid;
-    grid-template-columns: 180px 1fr 120px;
-    grid-template-rows: 16px 32px;
-    gap: 8px;
-    h5.section-title {
-        grid-column: 1 / span 1;
-        grid-row: 1 / span 1;
-    }
-    div.group-picker-head {
-        @extend .border-light-gray;
-        grid-column: 1 / span 1;
-        grid-row: 2 / span 1;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-radius: 6px;
-        div {
-            @extend .text-dark-gray;
-        }
-    }
-    div.options-container {
-        position: absolute;
-        width: 180px;
-        bottom: 32px;
-        z-index: 10;
-        div.group {
-            @extend .border-light-gray;
-            background-color: white;
-            transition: background-color 0.1s ease-in-out;
-            &:hover {
-                @extend .background-purple;
-                color: white;
-            }
-        }
-    }
-    div.group {
-        display: flex;
-        align-items: center;
-        height: 32px;
-        img {
-            @extend .background-light-gray;
-            border-radius: 4px;
-            height: 24px;
-            margin: 4px;
-        }
-    }
-    button.submit-button {
-        @extend .background-dark-purple;
-        grid-column: 3 / span 1;
-        grid-row: 2 / span 1;
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        color: white;
-        font-weight: 600;
-        font-size: 14px;
-        border: none;
-        border-radius: 6px;
-        transition: background-color 0.25s ease-in-out;
-        &:hover {
-            @extend .background-gold;
-        }
-    }
-}
-
-// MAIN PAGE
-
-.main-page {
-    width: 564px;
-}
-
-// ROOT
-
-#root {
-    display: flex;
 }

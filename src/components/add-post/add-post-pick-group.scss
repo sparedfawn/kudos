@@ -1,0 +1,70 @@
+@use "../../index.scss";
+
+section.pick-group-submit {
+    display: grid;
+    grid-template-columns: 180px 1fr 120px;
+    grid-template-rows: 16px 32px;
+    gap: 8px;
+    h5.section-title {
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+    }
+    div.group-picker-head {
+        @extend .border-light-gray;
+        grid-column: 1 / span 1;
+        grid-row: 2 / span 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 6px;
+        div {
+            @extend .text-dark-gray;
+        }
+        div.default-option {
+            margin-left: 4px;
+        }
+    }
+    div.options-container {
+        position: absolute;
+        width: 180px;
+        bottom: 32px;
+        z-index: 10;
+        div.group {
+            @extend .border-light-gray;
+            background-color: white;
+            transition: background-color 0.1s ease-in-out;
+            &:hover {
+                @extend .background-purple;
+                color: white;
+            }
+        }
+    }
+    div.group {
+        display: flex;
+        align-items: center;
+        height: 32px;
+        svg.group-icon {
+            @extend .background-light-gray;
+            @extend .paint-dark-purple;
+            border-radius: 4px;
+            margin: 4px;
+        }
+    }
+    button.submit-button {
+        @extend .background-dark-purple;
+        grid-column: 3 / span 1;
+        grid-row: 2 / span 1;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        color: white;
+        font-weight: 600;
+        font-size: 14px;
+        border: none;
+        border-radius: 6px;
+        transition: background-color 0.25s ease-in-out;
+        &:hover {
+            @extend .background-gold;
+        }
+    }
+}

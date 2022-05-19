@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
-import ExpandMoreIcon from "../../icons/expand_more.svg";
+import { ReactComponent as ExpandMoreIcon } from "../../icons/expand_more.svg";
+import { ReactComponent as OfficeIcon } from "../../icons/office.svg";
+import "./add-post-pick-group.scss";
 
 const AddPostPickGroup = ({ currentGroupId, handlePickingGroup, groups }) => {
     const [isDropdownOpened, setIsDropdownOpened] = useState(false);
@@ -35,7 +37,7 @@ const AddPostPickGroup = ({ currentGroupId, handlePickingGroup, groups }) => {
             <h5 className="section-title">Wybierz grupę</h5>
             <div className="group-picker-head" onClick={handleOpeningDropdown}>
                 {groupPickerSection}
-                <img src={ExpandMoreIcon} />
+                <ExpandMoreIcon />
             </div>
             {isDropdownOpened && <div className="options-container">{groupsSelectOptions}</div>}
         </>
@@ -45,7 +47,7 @@ const AddPostPickGroup = ({ currentGroupId, handlePickingGroup, groups }) => {
 const Group = ({ group }) => {
     return (
         <div className="group">
-            <img src={group.icon} />
+            <OfficeIcon className="group-icon" />
             <span>{group.name}</span>
         </div>
     );

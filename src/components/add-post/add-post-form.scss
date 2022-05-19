@@ -1,0 +1,40 @@
+@use "../../index.scss";
+
+.add-post {
+    @extend .background-white;
+    box-sizing: border-box;
+    position: absolute;
+    left: -564px;
+    font-size: 14px;
+    width: 564px;
+    padding: 32px;
+}
+
+.add-post-off-screen {
+    animation-name: addPostExit;
+    animation-duration: 0.75s;
+}
+
+.add-post-on-screen {
+    left: 0px;
+    animation-name: addPostEntrence;
+    animation-duration: 0.75s;
+}
+
+@keyframes addPostEntrence {
+    from {
+        left: -564px;
+    }
+    to {
+        left: 0px;
+    }
+}
+
+@keyframes addPostExit {
+    from {
+        left: 0px;
+    }
+    to {
+        left: -564px;
+    }
+}

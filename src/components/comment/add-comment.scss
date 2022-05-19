@@ -1,0 +1,18 @@
+@use "../../index.scss";
+
+section.add-comment {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 12px;
+    margin-top: 24px;
+    img.face-photo {
+        grid-column: 1 / span 1;
+        border-radius: 50%;
+        width: 100%;
+        align-self: center;
+    }
+    div.text-area {
+        @extend .text-dark-gray;
+        grid-column: 2 / span 1;
+    }
+}

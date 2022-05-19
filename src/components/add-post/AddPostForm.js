@@ -7,6 +7,7 @@ import AddPostPickKudos from "./AddPostPickKudos";
 import AddPostPickGroup from "./AddPostPickGroup";
 import AddPostMentions from "./AddPostMentions";
 import { LoggedInUserContext } from "../../context/LoggedInUserContext";
+import "./add-post-form.scss";
 
 const AddPostForm = ({ addPost }) => {
     const [kudosTemplatesData, setKudosTemplatesData] = useState([]);
@@ -82,8 +83,14 @@ const AddPostForm = ({ addPost }) => {
                 kudosTemplates={kudosTemplatesData}
             />
             <section className="pick-group-submit">
-                <AddPostPickGroup currentGroupId={formState.groupId} handlePickingGroup={handlePickingGroup} groups={groupsData} />
-                <button className="submit-button" onClick={handlePublishingPost}>Opublikuj</button>
+                <AddPostPickGroup
+                    currentGroupId={formState.groupId}
+                    handlePickingGroup={handlePickingGroup}
+                    groups={groupsData}
+                />
+                <button className="submit-button" onClick={handlePublishingPost}>
+                    Opublikuj
+                </button>
             </section>
         </main>
     );
