@@ -75,7 +75,7 @@ const TextArea = ({ editorState, setEditorState, readOnly, placeholder, characte
     }, []);
 
     return (
-        <div className="text-area">
+        <div className={`text-area ${readOnly ? "read-only-text-area" : "write-text-area"}`}>
             <Editor
                 editorState={editorState}
                 onChange={handleTextEditorValueChange}

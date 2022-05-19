@@ -12,6 +12,7 @@ const AddPostHead = () => {
         const addPostFormSection = document.getElementById("add-post-container");
         addPostFormSection.classList.remove("add-post-on-screen");
         addPostFormSection.classList.add("add-post-off-screen");
+        addPostFormSection.style.position = "absolute";
     };
 
     return (

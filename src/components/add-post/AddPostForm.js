@@ -73,7 +73,7 @@ const AddPostForm = ({ addPost }) => {
     const mentions = handleMentions(editorState, formState.removedFromMentions);
 
     return (
-        <main id="add-post-container" className="add-post">
+        <main id="add-post-container" className="add-post-container">
             <AddPostHead />
             <AddPostTextSection editorState={editorState} setEditorState={setEditorState} />
             <AddPostMentions mentions={mentions} handleRemovingFromMentions={handleRemovingFromMentions} />
