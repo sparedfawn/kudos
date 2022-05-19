@@ -1,5 +1,11 @@
 @use "../../index.scss";
 
+@media (max-width: 564px) {
+    .add-post-container {
+        width: 100vmin;
+    }
+}
+
 .add-post-container {
     @extend .background-white;
     box-sizing: border-box;
