@@ -11,7 +11,7 @@ const AddComment = () => {
 
     return (
         <section className="add-comment">
-            <img className="face-photo" src={loggedInUserData.photo} />
+            <img className="face-photo" src={loggedInUserData.avatar} />
             <TextArea
                 editorState={editorState}
                 setEditorState={setEditorState}

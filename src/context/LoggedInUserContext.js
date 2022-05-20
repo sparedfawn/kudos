@@ -4,16 +4,14 @@ const Context = React.createContext();
 
 const ContextProvider = ({ children }) => {
     const [loggedInUserData, setLoggedInUserData] = useState({
-        firstName: "",
-        lastName: "",
-        photo: "",
+        name: "",
+        avatar: "",
     });
 
     useEffect(() => {
         setLoggedInUserData({
-            firstName: "Adam",
-            lastName: "Testowy",
-            photo: "https://raw.githubusercontent.com/sparedfawn/image-host/main/kudos-app/face-photo.jpg",
+            name: "Adam Testowy",
+            avatar: "https://raw.githubusercontent.com/sparedfawn/image-host/main/kudos-app/face-photo.jpg",
         });
     }, []);
 

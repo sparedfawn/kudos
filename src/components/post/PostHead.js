@@ -10,10 +10,8 @@ const PostHead = ({ creationDate, author }) => {
     return (
         <section className="post-head">
             <div className="post-head-data-container">
-                <img className="post-author-photo" src={author.photo} />
-                <h5 className="post-author">
-                    {author.firstName} {author.lastName}
-                </h5>
+                <img className="post-author-photo" src={author.avatar} />
+                <h5 className="post-author">{author.name}</h5>
                 <p className="post-time-passed">{timeSincePostCreation}</p>
             </div>
             <AgreementIcon className="post-agreement-icon" />

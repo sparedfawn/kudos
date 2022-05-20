@@ -9,6 +9,11 @@
         margin-right: auto;
         text-transform: uppercase;
     }
+    svg.add-post-head-agreement-icon {
+        .a, .c {
+            @extend .paint-dark-purple;
+        }
+    }
     button.close-page {
         @extend .background-light-gray;
         border: none;

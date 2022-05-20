@@ -6,11 +6,13 @@ import AddPostTextSection from "./AddPostTextSection";
 import AddPostPickKudos from "./AddPostPickKudos";
 import AddPostPickGroup from "./AddPostPickGroup";
 import AddPostMentions from "./AddPostMentions";
+import { closePage } from "../../common/closeAddPostPage";
 import { LoggedInUserContext } from "../../context/LoggedInUserContext";
 import "./add-post-form.scss";
 
 const AddPostForm = ({ addPost }) => {
     const [kudosTemplatesData, setKudosTemplatesData] = useState([]);
+    const [validationMessage, setValidationMessage] = useState("");
     const [groupsData, setGroupsData] = useState([]);
     const { loggedInUserData } = useContext(LoggedInUserContext);
 
@@ -28,6 +30,16 @@ const AddPostForm = ({ addPost }) => {
         const groupsJsonData = require("../../data/groups.json");
         setGroupsData(groupsJsonData);
     }, []);
+
+    useEffect(() => {
+        if (validationMessage !== "") {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    }, [validationMessage]);
+
+    useEffect(() => {
+        setValidationMessage("");
+    }, [editorState, formState]);
 
     const handleRemovingFromMentions = (mention) => {
         setFormState((prevFormState) => {
@@ -57,17 +69,29 @@ const AddPostForm = ({ addPost }) => {
     };
 
     const handlePublishingPost = () => {
-        const postFormData = {
-            author: loggedInUserData,
-            creationDate: new Date(),
-            content: convertToRaw(editorState.getCurrentContent()),
-            likes: 0,
-            comments: [],
-            person: mentions[0],
-            group: groupsData.find((group) => group.id === formState.groupId),
-            kudos: kudosTemplatesData.find((kudos) => kudos.id === formState.kudosId),
-        };
-        addPost(postFormData);
+        const errorMessage = validateForm(mentions, formState);
+        if (!errorMessage) {
+            const postFormData = {
+                author: loggedInUserData,
+                creationDate: new Date(),
+                content: convertToRaw(editorState.getCurrentContent()),
+                likes: 0,
+                comments: [],
+                person: mentions[0],
+                group: groupsData.find((group) => group.id === formState.groupId),
+                kudos: kudosTemplatesData.find((kudos) => kudos.id === formState.kudosId),
+            };
+            addPost(postFormData);
+            setEditorState(() => EditorState.createEmpty());
+            setFormState({
+                removedFromMentions: [],
+                kudosId: 0,
+                groupId: 0,
+            });
+            closePage();
+        } else {
+            setValidationMessage(errorMessage);
+        }
     };
 
     const mentions = handleMentions(editorState, formState.removedFromMentions);
@@ -75,6 +99,7 @@ const AddPostForm = ({ addPost }) => {
     return (
         <main id="add-post-container" className="add-post-container">
             <AddPostHead />
+            {validationMessage && <div className={`validation-message`}>{validationMessage}</div>}
             <AddPostTextSection editorState={editorState} setEditorState={setEditorState} />
             <AddPostMentions mentions={mentions} handleRemovingFromMentions={handleRemovingFromMentions} />
             <AddPostPickKudos
@@ -112,6 +137,25 @@ function handleMentions(editorState, removedFromMentions) {
     );
 
     return mentionsWithoutRemoved;
+}
+
+function validateForm(mentions, formState) {
+    let validationMessage;
+    switch (true) {
+        case mentions.length === 0:
+            validationMessage = "Brak osoby otrzymującej kudos";
+            break;
+        case mentions.length > 1:
+            validationMessage = "Tylko jedna osoba moze otrzymac kudos";
+            break;
+        case formState.kudosId === 0:
+            validationMessage = "Nie wybrano szablonu kudosa";
+            break;
+        case formState.groupId === 0:
+            validationMessage = "Nie wybrano grupy";
+            break;
+    }
+    return validationMessage;
 }
 
 export default AddPostForm;
