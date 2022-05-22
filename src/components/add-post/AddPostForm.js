@@ -2,19 +2,21 @@ import React, { useState, useEffect, useContext } from "react";
 import { EditorState, convertToRaw } from "draft-js";
 
 import AddPostHead from "./AddPostHead";
-import AddPostTextSection from "./AddPostTextSection";
-import AddPostPickKudos from "./AddPostPickKudos";
-import AddPostPickGroup from "./AddPostPickGroup";
-import AddPostMentions from "./AddPostMentions";
+import AddPostContentInput from "./AddPostContentInput";
+import AddPostKudosTemplatePicker from "./AddPostKudosTemplatePicker";
+import AddPostGroupPicker from "./AddPostGroupPicker";
+import AddPostKudosReceiverPicker from "./AddPostKudosReceiverPicker";
+
 import { closePage } from "../../common/closeAddPostPage";
 import { LoggedInUserContext } from "../../context/LoggedInUserContext";
-import "./add-post-form.scss";
+
+import "./add-post.scss";
 
 const AddPostForm = ({ addPost }) => {
-    const [kudosTemplatesData, setKudosTemplatesData] = useState([]);
-    const [validationMessage, setValidationMessage] = useState("");
-    const [groupsData, setGroupsData] = useState([]);
     const { loggedInUserData } = useContext(LoggedInUserContext);
+
+    const [kudosTemplatesData, setKudosTemplatesData] = useState([]);
+    const [groupsData, setGroupsData] = useState([]);
 
     const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
     const [formState, setFormState] = useState({
@@ -22,6 +24,8 @@ const AddPostForm = ({ addPost }) => {
         kudosId: 0,
         groupId: 0,
     });
+
+    const [validationMessage, setValidationMessage] = useState("");
 
     useEffect(() => {
         const kudosTemplatesJsonData = require("../../data/kudos-templates.json");
@@ -31,12 +35,14 @@ const AddPostForm = ({ addPost }) => {
         setGroupsData(groupsJsonData);
     }, []);
 
+    // scrolls up when validation message appears
     useEffect(() => {
         if (validationMessage !== "") {
             window.scrollTo({ top: 0, behavior: "smooth" });
         }
     }, [validationMessage]);
 
+    // resets validation message when changing form data
     useEffect(() => {
         setValidationMessage("");
     }, [editorState, formState]);
@@ -69,28 +75,36 @@ const AddPostForm = ({ addPost }) => {
     };
 
     const handlePublishingPost = () => {
-        const errorMessage = validateForm(mentions, formState);
-        if (!errorMessage) {
-            const postFormData = {
+        const messageAfterValidation = validateForm(mentions, formState);
+
+        // if there is no message then validation is passed
+        if (!messageAfterValidation) {
+            // post object out of form data
+            const postData = {
                 author: loggedInUserData,
+                receiver: mentions[0],
                 creationDate: new Date(),
-                content: convertToRaw(editorState.getCurrentContent()),
+                content: convertToRaw(editorState.getCurrentContent()), // converts post content to json object
                 likes: 0,
                 comments: [],
-                person: mentions[0],
                 group: groupsData.find((group) => group.id === formState.groupId),
-                kudos: kudosTemplatesData.find((kudos) => kudos.id === formState.kudosId),
+                kudosTemplate: kudosTemplatesData.find((kudos) => kudos.id === formState.kudosId),
             };
-            addPost(postFormData);
+
+            // adds post to array of posts
+            addPost(postData);
+
+            // resets form state to initial
             setEditorState(() => EditorState.createEmpty());
             setFormState({
                 removedFromMentions: [],
                 kudosId: 0,
                 groupId: 0,
             });
+
             closePage();
         } else {
-            setValidationMessage(errorMessage);
+            setValidationMessage(messageAfterValidation);
         }
     };
 
@@ -100,15 +114,15 @@ const AddPostForm = ({ addPost }) => {
         <main id="add-post-container" className="add-post-container">
             <AddPostHead />
             {validationMessage && <div className={`validation-message`}>{validationMessage}</div>}
-            <AddPostTextSection editorState={editorState} setEditorState={setEditorState} />
-            <AddPostMentions mentions={mentions} handleRemovingFromMentions={handleRemovingFromMentions} />
-            <AddPostPickKudos
+            <AddPostContentInput editorState={editorState} setEditorState={setEditorState} />
+            <AddPostKudosReceiverPicker mentions={mentions} handleRemovingFromMentions={handleRemovingFromMentions} />
+            <AddPostKudosTemplatePicker
                 handlePickingKudos={handlePickingKudos}
                 pickedKudosId={formState.kudosId}
                 kudosTemplates={kudosTemplatesData}
             />
             <section className="pick-group-submit">
-                <AddPostPickGroup
+                <AddPostGroupPicker
                     currentGroupId={formState.groupId}
                     handlePickingGroup={handlePickingGroup}
                     groups={groupsData}
@@ -121,6 +135,7 @@ const AddPostForm = ({ addPost }) => {
     );
 };
 
+// returns array of mentions from post content without duplicates and without mentions removed from receivers
 function handleMentions(editorState, removedFromMentions) {
     const textEditorEntities = convertToRaw(editorState.getCurrentContent()).entityMap;
     const mentions = Object.entries(textEditorEntities)
@@ -139,6 +154,7 @@ function handleMentions(editorState, removedFromMentions) {
     return mentionsWithoutRemoved;
 }
 
+// returns undefined validation message when ok
 function validateForm(mentions, formState) {
     let validationMessage;
     switch (true) {

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Post from "./Post";
 import AddPostButton from "./AddPostButton";
 import AddPostForm from "../add-post/AddPostForm";
+
 import "./posts.scss";
 
 const Posts = () => {
@@ -21,12 +22,14 @@ const Posts = () => {
         setPostsData((prevPostsData) => [...prevPostsData, post]);
     };
 
-    const postsSection = postsData.map((post) => <Post key={post.id} post={post} />);
+    const postsSection = postsData.map((post) => {
+        return <Post key={post.id} post={post} />;
+    });
 
     return (
         <>
             <AddPostForm addPost={addPost} />
-            <main id="main-page" className="main-page">
+            <main id="main-page-container" className="main-page">
                 <AddPostButton />
                 <section>{postsSection}</section>
             </main>

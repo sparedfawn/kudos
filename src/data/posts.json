@@ -2,28 +2,40 @@
     {
         "id": 1,
         "author": {
-            "name": "Adam Testowy",
-            "avatar": "https://raw.githubusercontent.com/sparedfawn/image-host/main/kudos-app/face-photo.jpg"
+            "id": 2,
+            "name": "Robert Lewandowski",
+            "link": "https://twitter.com/lewy_official",
+            "avatar": "https://pbs.twimg.com/profile_images/1437890233417220101/FAlresZr_400x400.jpg"
+        },
+        "receiver": {
+            "id": 3,
+            "name": "Iga Świątek",
+            "link": "https://twitter.com/iga_swiatek",
+            "avatar": "https://pbs.twimg.com/profile_images/1386962724492648449/tvU49FF4_400x400.jpg"
+        },
+        "group": {
+            "id": "2",
+            "name": "Marketing"
+        },
+        "kudosTemplate": {
+            "id": 4,
+            "image": "https://raw.githubusercontent.com/sparedfawn/image-host/660764526a015b10a662896dae4d84040a340902/kudos-app/kudos/positive_attitude.svg",
+            "description": "Pozytywny wpływ"
         },
         "creationDate": "2022-05-10T13:50:43.911Z",
         "content": {
             "blocks": [
                 {
-                    "key": "1uji6",
-                    "text": "giga figa post Matthew Russell 😀 ",
+                    "key": "ab68g",
+                    "text": "Wiele dzięki Iga Świątek za współpracę przy ostatnim projekcie. Dzięki twojej pomocy poradziłam sobie z badaniami i analizą! Mam nadzieję że jeszcze wiele takich projektów przed nami #grateful #blessed",
                     "type": "unstyled",
                     "depth": 0,
                     "inlineStyleRanges": [],
                     "entityRanges": [
                         {
-                            "offset": 15,
-                            "length": 15,
+                            "offset": 13,
+                            "length": 11,
                             "key": 0
-                        },
-                        {
-                            "offset": 31,
-                            "length": 1,
-                            "key": 1
                         }
                     ],
                     "data": {}
@@ -35,39 +47,16 @@
                     "mutability": "SEGMENTED",
                     "data": {
                         "mention": {
-                            "id": 1,
-                            "name": "Matthew Russell",
-                            "link": "https://twitter.com/mrussell247",
-                            "avatar": "https://pbs.twimg.com/profile_images/517863945/mattsailing_400x400.jpg"
+                            "id": 3,
+                            "name": "Iga Świątek",
+                            "link": "https://twitter.com/iga_swiatek",
+                            "avatar": "https://pbs.twimg.com/profile_images/1386962724492648449/tvU49FF4_400x400.jpg"
                         }
-                    }
-                },
-                "1": {
-                    "type": "emoji",
-                    "mutability": "IMMUTABLE",
-                    "data": {
-                        "emojiUnicode": "😀"
                     }
                 }
             }
         },
         "likes": 0,
-        "comments": [],
-        "person": {
-            "id": 1,
-            "name": "Matthew Russell",
-            "link": "https://twitter.com/mrussell247",
-            "avatar": "https://pbs.twimg.com/profile_images/517863945/mattsailing_400x400.jpg"
-        },
-        "group": {
-            "id": "2",
-            "name": "Marketing",
-            "icon": "https://raw.githubusercontent.com/sparedfawn/image-host/660764526a015b10a662896dae4d84040a340902/kudos-app/groups/office.svg"
-        },
-        "kudos": {
-            "id": 1,
-            "image": "https://raw.githubusercontent.com/sparedfawn/image-host/660764526a015b10a662896dae4d84040a340902/kudos-app/kudos/true_love.svg",
-            "description": "Dziękuje Ci"
-        }
+        "comments": []
     }
 ]

@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { LoggedInUserContext } from "../../context/LoggedInUserContext";
 import { ReactComponent as AgreementIcon } from "../../icons/agreement.svg";
 import { openPage } from "../../common/openAddPostPage";
+
 import "./add-post-button.scss";
 
 const AddPostButton = () => {

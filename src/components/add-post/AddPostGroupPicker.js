@@ -2,9 +2,10 @@ import React, { useState } from "react";
 
 import { ReactComponent as ExpandMoreIcon } from "../../icons/expand_more.svg";
 import { ReactComponent as OfficeIcon } from "../../icons/office.svg";
-import "./add-post-pick-group.scss";
 
-const AddPostPickGroup = ({ currentGroupId, handlePickingGroup, groups }) => {
+import "./add-post-group-picker.scss";
+
+const AddPostGroupPicker = ({ currentGroupId, handlePickingGroup, groups }) => {
     const [isDropdownOpened, setIsDropdownOpened] = useState(false);
 
     const handleOpeningDropdown = () => {
@@ -26,6 +27,7 @@ const AddPostPickGroup = ({ currentGroupId, handlePickingGroup, groups }) => {
 
     const currentGroup = groups.find((group) => group.id === currentGroupId);
 
+    // if there is current group then we display it else form is in initial state and we display placeholder
     const groupPickerSection = currentGroup ? (
         <Group group={currentGroup} />
     ) : (
@@ -53,4 +55,4 @@ const Group = ({ group }) => {
     );
 };
 
-export default AddPostPickGroup;
+export default AddPostGroupPicker;

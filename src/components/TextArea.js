@@ -11,21 +11,22 @@ import "@draft-js-plugins/mention/lib/plugin.css";
 
 import { ReactComponent as GifIcon } from "../icons/gif.svg";
 import { ReactComponent as AttachmentIcon } from "../icons/attachment.svg";
-import mentions from "../data/mentions";
+import users from "../data/users";
 import { EditorState } from "draft-js";
 
 import "./text-area.scss";
 
 const TextArea = ({ editorState, setEditorState, readOnly, placeholder, characterLimit }) => {
     const [open, setOpen] = useState(false);
-    const [suggestions, setSuggestions] = useState(mentions);
+    const [suggestions, setSuggestions] = useState(users);
 
     const characterNumber = editorState.getCurrentContent().getPlainText("").length;
 
+    // creates all plugins
     const { plugins, EmojiSuggestions, EmojiSelect, MentionSuggestions } = useMemo(() => {
         const mentionPlugin = createMentionPlugin();
         const hashtagPlugin = createHashtagPlugin();
-        const emojiPlugin = createEmojiPlugin({ useNativeArt: false });
+        const emojiPlugin = createEmojiPlugin({ useNativeArt: false }); // useNativeArt true uses browser default emotes
 
         const { MentionSuggestions } = mentionPlugin;
         const { EmojiSuggestions, EmojiSelect } = emojiPlugin;
@@ -39,6 +40,7 @@ const TextArea = ({ editorState, setEditorState, readOnly, placeholder, characte
         setEditorState(value);
     };
 
+    // handles potencial overlimiting characters inputed
     const handleBeforeInput = (input) => {
         if (characterLimit !== undefined) {
             if (input && characterNumber >= characterLimit) {
@@ -50,9 +52,11 @@ const TextArea = ({ editorState, setEditorState, readOnly, placeholder, characte
         return "not-handled";
     };
 
+    // handles pasting text
     const handlePastedText = (input) => {
         const remainingLength = characterLimit - characterNumber;
         if (input.length + characterNumber >= characterLimit) {
+            // if we are over limit text is being cut until matching the limit
             const newContent = Modifier.insertText(
                 editorState.getCurrentContent(),
                 editorState.getSelection(),
@@ -71,7 +75,7 @@ const TextArea = ({ editorState, setEditorState, readOnly, placeholder, characte
     }, []);
 
     const onSearchChange = useCallback(({ value }) => {
-        setSuggestions(defaultSuggestionsFilter(value, mentions));
+        setSuggestions(defaultSuggestionsFilter(value, users));
     }, []);
 
     return (
@@ -85,7 +89,7 @@ const TextArea = ({ editorState, setEditorState, readOnly, placeholder, characte
                 handleBeforeInput={handleBeforeInput}
                 handlePastedText={handlePastedText}
             />
-            {!readOnly && (
+            {!readOnly && ( // if text area is destined to be input we display all tools
                 <div className="text-area-tools">
                     <EmojiSuggestions />
                     <MentionSuggestions

@@ -15,4 +15,7 @@ section.add-comment {
         @extend .text-dark-gray;
         grid-column: 2 / span 1;
     }
+    div.add-comment-text-area-container {
+        position: relative;
+    }
 }

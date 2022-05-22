@@ -1,9 +1,10 @@
 import React from "react";
 
 import { ReactComponent as CloseIcon } from "../../icons/close.svg";
-import "./add-post-mentions.scss";
 
-const AddPostMentions = ({ mentions, handleRemovingFromMentions }) => {
+import "./add-post-kudos-receiver-picker.scss";
+
+const AddPostKudosReceiverPicker = ({ mentions, handleRemovingFromMentions }) => {
     const mentionsSection = mentions.map((mention) => (
         <div key={mention.id} className="mention">
             <span className="mention-text">{mention.name}</span>
@@ -21,4 +22,4 @@ const AddPostMentions = ({ mentions, handleRemovingFromMentions }) => {
     );
 };
 
-export default AddPostMentions;
+export default AddPostKudosReceiverPicker;

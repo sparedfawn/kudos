@@ -1,10 +1,11 @@
 import React from "react";
 
 import Kudos from "../Kudos";
-import "./add-post-pick-kudos.scss";
 
-const AddPostPickKudos = ({ handlePickingKudos, pickedKudosId, kudosTemplates }) => {
-    const kudosExamplePerson = {
+import "./add-post-kudos-template-picker.scss";
+
+const AddPostKudosTemplatePicker = ({ handlePickingKudos, pickedKudosId, kudosTemplates }) => {
+    const kudosExampleReceiver = {
         name: "Imie Nazwisko",
     };
 
@@ -12,9 +13,9 @@ const AddPostPickKudos = ({ handlePickingKudos, pickedKudosId, kudosTemplates })
         return (
             <Kudos
                 key={kudos.id}
-                className={pickedKudosId === kudos.id ? "add-post-kudos picked-kudos" : "add-post-kudos"}
-                kudos={kudos}
-                person={kudosExamplePerson}
+                className={pickedKudosId === kudos.id ? "add-post-kudos picked-kudos" : "add-post-kudos"} // if kudos is currently selected we give extra css class
+                template={kudos}
+                receiver={kudosExampleReceiver}
                 onClick={() => handlePickingKudos(kudos.id)}
             />
         );
@@ -27,4 +28,4 @@ const AddPostPickKudos = ({ handlePickingKudos, pickedKudosId, kudosTemplates })
     );
 };
 
-export default AddPostPickKudos;
+export default AddPostKudosTemplatePicker;

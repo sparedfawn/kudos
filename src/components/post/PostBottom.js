@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { ReactComponent as CommentIcon } from "../../icons/comment.svg";
 import { ReactComponent as OfficeIcon } from "../../icons/office.svg";
 import { ReactComponent as MoreIcon } from "../../icons/more.svg";
-import LikeButton from "./LikeButton";
+import LikePostButton from "./LikePostButton";
 
 import "./post-bottom.scss";
 
@@ -17,7 +17,7 @@ const PostBottom = ({ likes, comments, group }) => {
             </span>
             <div className="stat-section">
                 <div className="like-section">
-                    <LikeButton setLikes={setLikeNumber} /> <span>{likeNumber}</span>
+                    <LikePostButton setLikes={setLikeNumber} /> <span>{likeNumber}</span>
                 </div>
                 <div className="comment-section">
                     <CommentIcon /> <span>{comments.length}</span>

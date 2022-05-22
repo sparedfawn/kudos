@@ -1,5 +1,6 @@
 import moment from "moment";
 
-moment.locale("pl")
+// setting defaults for whole program
+moment.locale("pl");
 
 export default moment;

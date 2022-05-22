@@ -1,9 +1,11 @@
 export function closePage() {
-    const mainPage = document.getElementById("main-page");
-    mainPage.style.display = "block";
+    const mainPageContainer = document.getElementById("main-page-container");
+    mainPageContainer.style.display = "block"; // changing to default
 
-    const addPostFormSection = document.getElementById("add-post-container");
-    addPostFormSection.classList.remove("add-post-on-screen");
-    addPostFormSection.classList.add("add-post-off-screen");
-    addPostFormSection.style.position = "absolute";
+    const addPostContainer = document.getElementById("add-post-container");
+    // handling animation
+    addPostContainer.classList.remove("add-post-on-screen");
+    addPostContainer.classList.add("add-post-off-screen");
+
+    addPostContainer.style.position = "absolute"; // changing to default
 }

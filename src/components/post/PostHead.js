@@ -2,6 +2,7 @@ import React from "react";
 import moment from "../../common/moment";
 
 import { ReactComponent as AgreementIcon } from "../../icons/agreement.svg";
+
 import "./post-head.scss";
 
 const PostHead = ({ creationDate, author }) => {
