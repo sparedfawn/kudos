@@ -6,9 +6,15 @@ import { ReactComponent as MoreIcon } from "../../icons/more.svg";
 import LikePostButton from "./LikePostButton";
 
 import "./post-bottom.scss";
+import PostBottomPopupMenu from "./PostBottomPopupMenu";
 
 const PostBottom = ({ likes, comments, group }) => {
     const [likeNumber, setLikeNumber] = useState(likes);
+    const [isPopupMenuOpened, setIsPopupMenuOpened] = useState(false);
+
+    const togglePopupMenu = () => {
+        setIsPopupMenuOpened((prevState) => !prevState);
+    };
 
     return (
         <section className="post-bottom">
@@ -22,9 +28,10 @@ const PostBottom = ({ likes, comments, group }) => {
                 <div className="comment-section">
                     <CommentIcon /> <span>{comments.length}</span>
                 </div>
-                <button className="more">
+                <button className="more" onClick={togglePopupMenu}>
                     <MoreIcon />
                 </button>
+                <PostBottomPopupMenu isOpened={isPopupMenuOpened} />
             </div>
         </section>
     );

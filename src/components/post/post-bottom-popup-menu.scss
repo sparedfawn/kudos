@@ -1,0 +1,14 @@
+@use "../../index.scss";
+
+div.post-bottom-popup-menu-container {
+    @extend .border-light-gray;
+    @extend .background-white;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 5;
+    bottom: 24px;
+    right: 0;
+    div {
+        padding: 4px;
+    }
+}
